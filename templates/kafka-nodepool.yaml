@@ -9,5 +9,6 @@ spec:
   replicas: 1
   roles:
     - broker
+    - controller
   storage:
     type: ephemeral
