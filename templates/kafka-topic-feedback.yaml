@@ -1,13 +1,14 @@
-apiVersion: kafka.strimzi.io/v1
+apiVersion: kafka.strimzi.io/v1beta2
 kind: KafkaTopic
 metadata:
   name: feedback-requests
   namespace: kafka
   labels:
-    strimzi.io/cluster: my-cluster  # <-- Vincula el tópico a tu clúster
+    strimzi.io/cluster: my-cluster
 spec:
-  partitions: 1
-  replicas: 1
+  partitions: 3          # Subimos a 3 particiones para permitir procesamiento en paralelo
+  replicas: 1            # En desarrollo dejamos 1 sola réplica
   config:
-    retention.ms: 604800000  # 7 días de retención de mensajes
-    segment.bytes: 1073741824
+    cleanup.policy: delete     # Mantener HISTORIAL completo (¡Haciéndole caso al Tech Lead!)
+    retention.ms: 604800000    # 7 días de retención de seguridad
+    segment.bytes: 1073741824  # Tamaño de segmento estándar (1GB)
