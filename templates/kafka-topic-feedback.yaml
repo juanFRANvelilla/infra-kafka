@@ -1,0 +1,13 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaTopic
+metadata:
+  name: feedback-requests
+  namespace: kafka
+  labels:
+    strimzi.io/cluster: my-cluster  # <-- Vincula el tópico a tu clúster
+spec:
+  partitions: 1
+  replicas: 1
+  config:
+    retention.ms: 604800000  # 7 días de retención de mensajes
+    segment.bytes: 1073741824
