@@ -1,7 +1,7 @@
 apiVersion: kafka.strimzi.io/v1
 kind: Kafka
 metadata:
-  name: kafka-cluster
+  name: my-cluster
   namespace: kafka
 spec:
   kafka:
@@ -21,6 +21,8 @@ spec:
       transaction.state.log.min.isr: 1
       default.replication.factor: 1
       min.insync.replicas: 1
+  entityOperator:
+    topicOperator: {}
   zookeeper:
     replicas: 1
     storage:
