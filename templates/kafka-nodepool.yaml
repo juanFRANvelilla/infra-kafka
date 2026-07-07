@@ -4,7 +4,7 @@ metadata:
   name: kafka-mixed
   namespace: kafka
   labels:
-    strimzi.io/cluster: my-cluster
+    strimzi.io/cluster: kafka-cluster
 spec:
   replicas: 1
   roles:
